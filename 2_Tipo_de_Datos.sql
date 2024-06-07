@@ -1,3 +1,4 @@
+-- == TIPO DE DATOS ==
 char --almacena tipo de datos alfanumericos de ancho fijo.
 varchar --alamacena tipo de datos alfanumericos de ancho variable.
 text --almacena tipo de datos texto.
