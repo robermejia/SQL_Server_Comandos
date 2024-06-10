@@ -11,5 +11,9 @@ SELECT * FROM Empleado;
 SELECT * nombre FROM Empleado;
 --SELECT Nombre_Campo FROM NombreTabla
 
+-- VER REGISTROS CON DATOS NULOS Y NO NULOS
+SELECT * FROM Empleado WHERE nombre IS NULL;
+SELECT * FROM Empleado WHERE nombre IS NOT NULL;
+
 -- VER CAMPOS DE LA TABLA (detalles)
 EXEC SP_HELP Empleados;
