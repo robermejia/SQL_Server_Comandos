@@ -1,4 +1,4 @@
--- CREANDO TABLA Y CAMPOS SIN DATOS NULOS.
+-- CREANDO TABLA Y CAMPOS.
 CREATE TABLE Empleados( --CREATE TABLE nombre_de_tabla
     idEmpleado INT, 
     nombre VARCHAR(20), --Nombre_Campo TIPO_DE_DATO(Cant. de caracteres),
@@ -11,13 +11,14 @@ CREATE TABLE Empleados( --CREATE TABLE nombre_de_tabla
     activo CHAR(2) 
 );
 
--- CREANDO TABLA Y CAMPOS CON DATOS NULOS.
+-- CREANDO TABLA Y CAMPOS CON DATOS NULOS Y OBLIGATORIO.
 CREATE TABLE Clientes( --CREATE TABLE nombre_de_tabla
-    idCliente INT, 
-    nombre VARCHAR(20), --Nombre_Campo TIPO_DE_DATO(Cant. de caracteres),
-    apellido VARCHAR(30),
-    direccion VARCHAR(100),
+    idCliente INT NOT NULL, -- Este campo es obligatorio.
+    nombre VARCHAR(10) NOT NULL, -- Este campo es obligatorio.
+    apellido VARCHAR(30) NOT NULL, -- Este campo es obligatorio.
+    direccion VARCHAR(100) NULL, -- Permite ingresar un valor NULL.
 );
+
 -- CREANDO REGISTROS.
 INSERT INTO Empleados VALUES(1, 'José', 'Feliciano', 35, 1234567890, 'Calle primavera n1', '2024-06-03', 30000.00, 'SI');        
 INSERT INTO Empleados VALUES(2, 'Manuel', 'Perez', 30, 9234567890, 'Calle Cotosh n1', '2024-08-10', 20000.00, 'NO');
