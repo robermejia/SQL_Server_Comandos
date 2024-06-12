@@ -1,0 +1,38 @@
+-- NOTA:
+-- SOLO PUEDE IR UN CAMPO AUTOINCREMENTABLE POR TABLA
+-- CUANDO SE ELIMINA EL REGISTRO CON EL CAMPO LLENADO AUTOINCREMENTABLE SE SALTA 
+-- AL SIGUIENTE Y ES "IRRECUPERABLE"
+-- (Aunque se cree un registro con ese mismo número de campo, no lo permite).
+
+-- CREANDO CAMPO AUTOINCREMENTABLE.
+CREATE TABLE Empleados( 
+    idEmpleado INT IDENTITY, 
+    nombre VARCHAR(20) NOT NULL,
+    edad INT NOT NULL
+);
+
+-- CREANDO CAMPO AUTOINCREMENTABLE PERSONALIZADO.
+CREATE TABLE Empleados( 
+    idEmpleado INT IDENTITY(10,5), -- El primer valor es 10 y en avanza en 5 en 5.  
+    nombre VARCHAR(20) NOT NULL,
+    edad INT NOT NULL
+);
+-- INSERTANDO DATOS EN CAMPO AUTOINCREMENTABLE.
+INSERT INTO Empleados VALUES('Carlos', 30); -- El campo autoincrementable no se llena.
+
+-- VER VALOR INICIAL AUTOINCREMENTABLE.
+SELECT IDENT_SEED('Empleados');
+
+-- VER RANGO DE INCREMENTO DE CADA VALOR DEL CAMPO AUTOINCREMENTABLE.
+SELECT IDENT_INCR('Empleados');
+
+-- DESACTIVAR CAMPO AUTOINCREMENTABLE POR UN RATO (para insertar datos personalizados).
+SET IDENTITY_INSERT Empleados ON;
+
+-- INSERTAR DATOS PERSONALIZADOS, PERO QUE CUMPLAN CON EL RANGO DE INCREMENTO.
+INSERT INTO Empleados (idEmpleado, nombre, edad) VALUES(25, 'Alejandro', 30); 
+-- (Acepta el número 25 porque, en este ejemplo se incrementa en 5 en 5).
+-- (Se salteo el campo de incremento de 5 a 25). 
+
+-- ACTIVAR NUEVAMENTE CAMPO AUTOINCREMENTABLE.
+SET IDENTITY_INSERT Empleados OFF;
