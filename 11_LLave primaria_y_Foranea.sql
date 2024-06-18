@@ -27,3 +27,24 @@ ALTER TABLE Empleados ADD CONSTRAINT PK_Empleado (idEmpleado);
 
 -- BORRAR LLAVE PRIMARIA
 ALTER TABLE Empleados DROP CONSTRAINT PK_Empleado;
+
+-- LLAVE FORANEA
+-- NOTA:
+-- La FK debe ser del mismo tipo que en la tabla primaria o principal
+-- CREANDO LLAVE FORANEA
+CREATE TABLE Ordenes( 
+    id_Orden INT NOT NULL, 
+    articulo VARCHAR(50) NOT NULL,
+    id_Cliente INT NOT NULL,
+    CONSTRAINT FK_ordenes_clientes FOREIGN KEY REFERENCES clientes(id_Cliente); -- Forma corredcta de crear FK
+);
+
+-- ELIMINAR REGISTROS, AUNQUE ESTE ENLAZADO A UNA FK
+CREATE TABLE Ordenes( 
+    id_Orden INT NOT NULL, 
+    articulo VARCHAR(50) NOT NULL,
+    id_Cliente INT NOT NULL,
+    CONSTRAINT FK_ordenes_clientes FOREIGN KEY REFERENCES clientes(id_Cliente) ON DELETE CASCADE; 
+    -- Para borrar un registro desde la tabla principal aunque este vinculado a un FK.
+
+);
